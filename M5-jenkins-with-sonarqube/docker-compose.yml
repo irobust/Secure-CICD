@@ -1,0 +1,51 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-home-demo:/var/jenkins_home
+    networks:
+      - deployment-network
+    depends_on:
+       # - dependency-track
+       - sonarqube
+  # dependency-track:
+  #   image: owasp/dependency-track
+  #   container_name: dependency-track
+  #   ports:
+  #     - "8082:8080"
+  #   volumes:
+  #     - dependency-track:/data
+  #   networks:
+  #     - deployment-network
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    volumes:
+      - sonarqube-demo
+    networks:
+      - deployment-network
+  zap:
+    image: owasp/zap2docker-stable
+    container_name: zap
+    command: "zap.sh -daemon -port 8090 -host 0.0.0.0 -config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true"
+    ports: 
+      - "8090:8090"
+    volumes:
+      - zapvolume-demo
+    networks:
+      - deployment-network
+volumes:
+  jenkins-home-demo:
+  dependency-track:
+  zap-volume-demo:
+  sonarqube-demo:
+networks:
+  deployment-network:

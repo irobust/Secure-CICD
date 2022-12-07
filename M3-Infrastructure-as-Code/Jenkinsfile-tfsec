@@ -1,0 +1,12 @@
+pipeline {
+  agent {
+    docker { image 'tfsec/tfsec-ci:v0.57.1' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'tfsec sadcloud --no-color'
+      }
+    }
+  }
+}
