@@ -63,4 +63,19 @@
       ```
 * docker run --rm -it -v "$(pwd):/src" aquasec/tfsec /src
 
+## Syft and Grype
+### Syft
+* syft [image-name]
+* syft package [image-name]
+* syft -o json [image-name]
+* syft dir:.
+
+### Grype
+* grype dir:.
+* grype [image-name]
+* grype [image-name] --scope all-layers
+* grype sbom:./sbom.json
+* grype dir:. --exclude './out/**/*.json'
+* grype [image-name] -o json
+* grype [image-name] --fail-on medium
 
