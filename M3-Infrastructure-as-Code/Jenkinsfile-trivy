@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'trivy config M3-Infrastructure-as-Code/manifests'
+        sh 'config M3-Infrastructure-as-Code/manifests'
       }
     }
   }
