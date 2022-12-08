@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'bridgecrew/checkov:2' }
+    docker { 
+        image 'bridgecrew/checkov:2'
+        args "--entrypoint=''"
+    }
   }
   stages {
     stage('Test') {
