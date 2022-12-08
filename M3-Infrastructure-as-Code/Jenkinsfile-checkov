@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'checkov -d compliant --quiet --compact'
+        sh 'checkov -d M3-Infrastructure-as-Code/compliant --quiet --compact'
       }
     }
   }
