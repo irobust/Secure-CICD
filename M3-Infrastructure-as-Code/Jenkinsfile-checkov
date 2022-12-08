@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'checkov -d M3-Infrastructure-as-Code/noncompliant --quiet --compact'
+        sh 'checkov -d M3-Infrastructure-as-Code/non-compliant --quiet --compact'
       }
     }
   }
