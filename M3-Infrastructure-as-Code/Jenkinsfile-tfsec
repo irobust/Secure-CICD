@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker { image 'tfsec/tfsec-ci:v1.13.1-arm64v8' }
+    docker { image 'tfsec/tfsec-ci:v1.13.2-arm64v8' }
   }
   stages {
     stage('Test') {
