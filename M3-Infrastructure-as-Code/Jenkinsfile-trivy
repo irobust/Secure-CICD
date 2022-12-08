@@ -1,0 +1,12 @@
+pipeline {
+  agent {
+    docker { image 'aquasec/trivy:0.35.0' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'trivy config M3-Infrastructure-as-Code/manifests'
+      }
+    }
+  }
+}
