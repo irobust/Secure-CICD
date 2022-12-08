@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'aquasec/trivy:0.35.0' }
+    docker { 
+        image 'aquasec/trivy:0.35.0'
+        args "--entrypoint=''"
+    }
   }
   stages {
     stage('Test') {
