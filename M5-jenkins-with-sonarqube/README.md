@@ -25,12 +25,14 @@
  
 8. Add Execute Sonarqube scanner
 	- Set Analysis Properties
+		```
 		sonar.projectKey=my:demo
 		sonar.projectName=demo-project
 		sonar.projectVersion=1.0
 		sonar.sources=${WORKSPACE}/
 		sonar.dependencyCheck.reportPath=${WORKSPACE}/dependency-check-report.xml
 		sonar.dependencyCheck.htmlReportPath=${WORKSPACE}/dependency-check-report.html
+		```
  
 9. Archive
 	- dependency-check-report.*

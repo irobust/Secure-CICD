@@ -9,5 +9,20 @@ services:
       - ./jenkins:/var/jenkins_home
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - deployment-network
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    volumes:
+      - sonarqube-demo
+    networks:
+      - deployment-network
 volumes:
   jenkins:
+  sonarqube-demo:
+networks:
+  deployment-network:

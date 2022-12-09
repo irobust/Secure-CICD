@@ -1,0 +1,40 @@
+---
+env:
+  contexts:
+  - name: "Default Context"
+    urls:
+    - "http://localhost:3000"
+    includePaths:
+    - "http://localhost:3000.*"
+    excludePaths: []
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars: {}
+jobs:
+- parameters:
+    scanOnlyInScope: true
+    enableTags: false
+  rules: []
+  name: "passiveScan-config"
+  type: "passiveScan-config"
+- parameters: {}
+  tests:
+  - onFail: "INFO"
+    statistic: "spiderAjax.urls.added"
+    operator: ">="
+    value: 100
+    name: "At least 100 URLs found"
+    type: "stats"
+  name: "spiderAjax"
+  type: "spiderAjax"
+- parameters: {}
+  name: "passiveScan-wait"
+  type: "passiveScan-wait"
+- parameters:
+    format: "NONE"
+  rules: []
+  name: "outputSummary"
+  type: "outputSummary"
+

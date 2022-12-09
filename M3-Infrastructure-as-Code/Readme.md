@@ -28,6 +28,44 @@
 * checkov --soft-fail-on SOFT_FAIL_ON [LOW|MEDIUM|HIGH|CRITICAL]
 * checkov --hard-fail-on HARD_FAIL_ON [LOW|MEDIUM|HIGH|CRITICAL]
 
+#### Fix non-compliant terraform
+CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+```
+replication_configuration {
+    role = aws_iam_role.replication.arn
+    rules {
+      id     = "foobar"
+      prefix = "foo"
+      status = "Enabled"
+
+      destination {
+        bucket        = aws_s3_bucket.destination.arn
+        storage_class = "STANDARD"
+      }
+    }
+  }
+```
+
+CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+```
+resource "aws_s3_bucket_public_access_block" "access_good_1" {
+  bucket = aws_s3_bucket.foo-bucket.id
+
+  block_public_acls   = true
+  block_public_policy = true
+}
+```
+
+CKV_AWS_56: "Ensure S3 bucket has 'restrict_public_bucket' enabled"
+```
+restrict_public_buckets = true
+```
+
+CKV_AWS_55: "Ensure S3 bucket has ignore public ACLs enabled"
+```
+ignore_public_acls = true
+```
+
 ### TFSec
 * tfsec /path/to/source-code
 * tfsec /path/to/source-code -s
