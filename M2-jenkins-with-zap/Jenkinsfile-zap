@@ -9,7 +9,7 @@ pipeline {
     stage('Test') {
       steps {
         sh '''
-          zap-baseline.py -h
+          zap-baseline.py -t http://host.docker.internal:3000
         '''
       }
     }

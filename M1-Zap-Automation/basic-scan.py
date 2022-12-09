@@ -5,11 +5,11 @@ import time
 from pprint import pprint
 from zapv2 import ZAPv2
 
-target = 'http://localhost:3000'
+target = 'http://host.docker.internal:3000'
 apikey = 'changeme' # Change to match the API key set in ZAP, or use None if the API key is disabled
 #
 # By default ZAP API client will connect to port 8080
-zap = ZAPv2(proxies={'http': 'http://localhost:8001', 'https': 'http://localhost:8001'})
+zap = ZAPv2(proxies={'http': 'http://localhost:8090', 'https': 'http://localhost:8090'})
 # Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
 # zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
 

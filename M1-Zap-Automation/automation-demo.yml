@@ -3,9 +3,9 @@ env:
   contexts:
   - name: "Default Context"
     urls:
-    - "http://localhost:3000"
+    - "http://host.docker.internal:3000"
     includePaths:
-    - "http://localhost:3000.*"
+    - "http://host.docker.internal:3000.*"
     excludePaths: []
   parameters:
     failOnError: true
@@ -32,9 +32,3 @@ jobs:
 - parameters: {}
   name: "passiveScan-wait"
   type: "passiveScan-wait"
-- parameters:
-    format: "NONE"
-  rules: []
-  name: "outputSummary"
-  type: "outputSummary"
-
