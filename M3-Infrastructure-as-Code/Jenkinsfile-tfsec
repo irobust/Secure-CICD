@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker { 
-        image 'tfsec/tfsec-ci:v1.13.2-arm64' 
+        image 'tfsec/tfsec-ci:v1.13.0-arm64v8' 
         args "--entrypoint=''"
     }
   }
