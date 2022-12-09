@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'tfsec M3-Infrastructure-as-Code/non-compliant --no-color'
+        sh 'tfsec M3-Infrastructure-as-Code/non-compliant -s --no-color'
       }
     }
   }
