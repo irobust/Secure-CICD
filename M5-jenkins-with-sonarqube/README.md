@@ -8,7 +8,7 @@
 3. SCM
 	- Git (Repo URL= https://github.com/irobust/dependencyCheckDemo.git)
  
-4.Scan with Dependency check
+4. Scan with Dependency check
 	- Set path to scan = ${WORKSPACE}/
 	- Generate html report
  
