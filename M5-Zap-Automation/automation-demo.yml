@@ -1,0 +1,34 @@
+---
+env:
+  contexts:
+  - name: "Default Context"
+    urls:
+    - "http://host.docker.internal:3000"
+    includePaths:
+    - "http://host.docker.internal:3000.*"
+    excludePaths: []
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars: {}
+jobs:
+- parameters:
+    scanOnlyInScope: true
+    enableTags: false
+  rules: []
+  name: "passiveScan-config"
+  type: "passiveScan-config"
+- parameters: {}
+  tests:
+  - onFail: "INFO"
+    statistic: "spiderAjax.urls.added"
+    operator: ">="
+    value: 100
+    name: "At least 100 URLs found"
+    type: "stats"
+  name: "spiderAjax"
+  type: "spiderAjax"
+- parameters: {}
+  name: "passiveScan-wait"
+  type: "passiveScan-wait"
