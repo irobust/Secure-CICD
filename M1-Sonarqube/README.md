@@ -1,3 +1,42 @@
+## SonarLint Example
+```
+function foo(a) { 
+  let b = 12;
+  if (a) {
+    return b;
+  }
+  return b;
+}
+```
+## Sonar Scanner Command
+1. Set parameters in command line
+	```
+	docker run --rm -it -v ${PWD}:/usr/src \
+        --network host \
+        --name sonar-scanner \
+        -e SONAR_HOST_URL="http://localhost:9000" \
+        -e SONAR_LOGIN="TOKEN" \
+        sonarsource/sonar-scanner-cli
+	```
+1. sonar-properties
+	```
+	sonar.projectKey=demo:insecureapp
+	sonar.projectName=Insecure Application Demo
+	sonar.projectVersion=1.2
+	sonar.sources=./src/main/java
+	sonar.tests=./src/test/java
+	sonar.exclusions=./src/view
+	sonar.host.url=http://localhost:9000
+	sonar.java.binaries=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+	sonar.qualitygate.wait=true
+	```
+1. Set environment variables
+	```
+	$Env:SONAR_HOST_URL="http://localhost:9000"
+	$Env:SONAR_TOKEN="...."
+	```
+
+## Integration with Jenkins
 1. Install Plug-ins
 	- SonarQube Scanner
 	- Dependency Check

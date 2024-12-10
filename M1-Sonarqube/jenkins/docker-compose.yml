@@ -11,17 +11,7 @@ services:
     networks:
       - deployment-network
     depends_on:
-       # - dependency-track
        - sonarqube
-  # dependency-track:
-  #   image: owasp/dependency-track
-  #   container_name: dependency-track
-  #   ports:
-  #     - "8082:8080"
-  #   volumes:
-  #     - dependency-track:/data
-  #   networks:
-  #     - deployment-network
   sonarqube:
     image: sonarqube
     container_name: sonarqube
